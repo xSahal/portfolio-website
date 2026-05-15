@@ -57,18 +57,18 @@ function App() {
   }
 
   const softwareSkills = [
-    'AutoCAD', 'Revit', 'Navisworks', '3Ds Max', 'V-Ray', 
+    'AutoCAD', 'Civil 3D', 'Revit', 'Navisworks', '3Ds Max', 'V-Ray',
     'Lumion', 'Aconex', 'SAP', 'Microsoft Office'
   ]
 
   const professionalSkills = [
-    'Interior Architecture Design', 'BIM Coordination', 'Shop Drawings',
+    'Infrastructure', 'BIM Coordination', 'Shop Drawings',
     '3D Modeling', 'Rendering', 'Communication', 'Team Collaboration'
   ]
 
   const personalSkills = [
     'Adaptable', 'Quick Learner', 'Self-learning', 'On-Time Task Completion',
-    'Supervising', 'Computer Systems', 'Data Entry', 'CAD'
+    'Supervising', 'CAD'
   ]
 
   return (
