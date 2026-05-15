@@ -126,15 +126,18 @@ function App() {
               Sahal Sameer <span className="text-gradient">Alshethri</span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-2 font-light">
-              Architect – Design Engineer
+              BIM Coordinator – Infrastructure
             </p>
             <p className="text-lg sm:text-xl text-amber-400 mb-8 font-medium">
-              BIM Coordinator Specialist
+              Design Engineer
             </p>
             <p className="max-w-2xl mx-auto text-muted-foreground mb-10 text-base sm:text-lg leading-relaxed">
-              Detail-oriented Architect and BIM Coordinator with expertise in 3D modeling, 
-              rendering, and BIM workflows. Skilled in coordinating multidisciplinary teams 
-              and delivering high-quality visualizations.
+              BIM Coordinator and Design Engineer with experience in infrastructure and
+              landscape projects across Saudi Arabia. Skilled in multidisciplinary BIM
+              coordination, asset information management, COBie workflows, shop drawings,
+              and model integration using Revit, Navisworks, and AutoCAD. Contributed to
+              mega projects through coordination, technical documentation, and BIM-based
+              project delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
