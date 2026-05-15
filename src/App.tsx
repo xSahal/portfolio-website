@@ -326,11 +326,10 @@ function App() {
                   </p>
                   <ul className="space-y-3">
                     {[
-                      'Produced and assisted in producing shop drawings for mega projects',
-                      'Coordinated BIM workflows across major projects',
-                      'Prepared and managed asset registers and asset information',
-                      'Implemented COBie standards for data exchange',
-                      'Developed irrigation network designs'
+                      'Managed asset information and COBie-related data for infrastructure projects during BIM coordination workflows.',
+                      'Coordinated multidisciplinary BIM models using Revit and Navisworks for large-scale infrastructure developments.',
+                      'Assisted in delivery of shop drawings and model coordination for mega projects including irrigation networks and landscape infrastructure.',
+                      'Supported model integration, clash coordination, and asset data preparation across project disciplines.'
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
