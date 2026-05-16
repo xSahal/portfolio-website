@@ -132,7 +132,7 @@ function App() {
       title: 'Wadi Greening',
       category: 'BIM Modeling',
       description:
-        'Produced detailed Revit models and generated IFC drawings for a 15 million m² wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
+        'Produced detailed Revit models and generated IFC drawings for a 2,416,033 m² wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
       alt: 'Desert valley landscape representing a wadi greening and rehabilitation project',
@@ -311,9 +311,9 @@ function App() {
               },
               {
                 icon: Layers,
-                value: '700K',
+                value: '4.6M',
                 label: 'm² Coordinated',
-                description: 'Across the Diriyah Golf Course masterplan',
+                description: 'Across infrastructure, coastal & landscape mega-projects',
               },
               {
                 icon: Cpu,
