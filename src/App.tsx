@@ -17,12 +17,15 @@ import {
   Languages,
   CheckCircle2,
   ArrowRight,
+  ArrowUp,
   Layers,
   Database,
   Boxes,
   Wrench,
   FileCheck,
-  AlertCircle
+  AlertCircle,
+  Menu,
+  X
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -31,18 +34,23 @@ import { Separator } from '@/components/ui/separator'
 
 function App() {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({})
+  const [activeSection, setActiveSection] = useState<string>('home')
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [showTopBtn, setShowTopBtn] = useState(false)
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({})
 
+  // Animate sections on enter + track active section for scroll-spy nav highlight
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }))
+            setActiveSection(entry.target.id)
           }
         })
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.25, rootMargin: '-80px 0px -40% 0px' }
     )
 
     Object.values(sectionsRef.current).forEach((section) => {
@@ -52,16 +60,26 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
+  // Show back-to-top button after user scrolls past the hero
+  useEffect(() => {
+    const onScroll = () => setShowTopBtn(window.scrollY > 600)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const setRef = (id: string) => (el: HTMLElement | null) => {
     sectionsRef.current[id] = el
   }
 
   const scrollToSection = (id: string) => {
+    setMobileNavOpen(false)
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
+  const navItems = ['Home', 'About', 'Experience', 'Projects', 'Education', 'Contact']
 
   const softwareSkills = [
     'AutoCAD', 'Civil 3D', 'Revit', 'Navisworks', '3Ds Max', 'V-Ray',
@@ -86,6 +104,7 @@ function App() {
         'Managed the asset register and COBie asset register across a 700,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
       image:
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
+      alt: 'Aerial view of a sweeping golf course coastline representing the Diriyah masterplan',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex', 'Automation', 'Script'],
       features: [
         { icon: Database, label: 'Asset Register' },
@@ -100,6 +119,7 @@ function App() {
         'Coordinated multidisciplinary BIM models for a coastal village development along the Red Sea, supporting infrastructure delivery and constructible model coordination across disciplines.',
       image:
         'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&auto=format&fit=crop&q=80',
+      alt: 'Aerial of coastal overwater villas representing a Red Sea coastal village development',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Aconex', 'Revizto'],
       features: [
         { icon: Boxes, label: 'Model Coordination' },
@@ -114,6 +134,7 @@ function App() {
         'Produced detailed Revit models and generated IFC drawings for a wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
+      alt: 'Desert valley landscape representing a wadi greening and rehabilitation project',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'Automation', 'Script'],
       features: [
         { icon: Boxes, label: 'Revit Modeling' },
@@ -129,38 +150,92 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
+            <button
+              onClick={() => scrollToSection('home')}
+              className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded"
+              aria-label="Back to top"
+            >
               <span className="text-xl font-bold text-gradient font-serif">SA</span>
-            </div>
+            </button>
+
+            {/* Desktop nav */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                {['Home', 'About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className="text-sm text-muted-foreground hover:text-amber-400 transition-colors duration-300"
-                  >
-                    {item}
-                  </button>
-                ))}
+                {navItems.map((item) => {
+                  const id = item.toLowerCase()
+                  const isActive = activeSection === id
+                  return (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(id)}
+                      className={`relative text-sm transition-colors duration-300 focus-visible:outline-none focus-visible:text-amber-400 ${
+                        isActive ? 'text-amber-400' : 'text-muted-foreground hover:text-amber-400'
+                      }`}
+                    >
+                      {item}
+                      <span
+                        className={`absolute -bottom-1.5 left-0 h-px bg-amber-400 transition-all duration-300 ${
+                          isActive ? 'w-full' : 'w-0'
+                        }`}
+                      />
+                    </button>
+                  )
+                })}
               </div>
             </div>
-            <Button 
-              size="sm" 
-              className="bg-amber-500 hover:bg-amber-600 text-background"
-              onClick={() => window.open('mailto:Alshethrisahal@gmail.com')}
-            >
-              Hire Me
-            </Button>
+
+            {/* Right side: Hire Me + mobile hamburger */}
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                className="bg-amber-500 hover:bg-amber-600 text-background"
+                onClick={() => window.open('mailto:alshethrisahal@gmail.com')}
+              >
+                Hire Me
+              </Button>
+              <button
+                className="md:hidden p-2 text-muted-foreground hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded"
+                onClick={() => setMobileNavOpen((v) => !v)}
+                aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileNavOpen}
+              >
+                {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu drawer */}
+        <div
+          className={`md:hidden overflow-hidden transition-[max-height] duration-300 ease-out border-t border-white/10 bg-background/95 backdrop-blur-xl ${
+            mobileNavOpen ? 'max-h-96' : 'max-h-0'
+          }`}
+        >
+          <div className="flex flex-col py-3 px-4 sm:px-6">
+            {navItems.map((item) => {
+              const id = item.toLowerCase()
+              const isActive = activeSection === id
+              return (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(id)}
+                  className={`py-3 text-left text-sm border-b border-border/30 last:border-0 transition-colors ${
+                    isActive ? 'text-amber-400' : 'text-muted-foreground hover:text-amber-400'
+                  }`}
+                >
+                  {item}
+                </button>
+              )
+            })}
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section 
-        id="home" 
+      <section
+        id="home"
         ref={setRef('home')}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden scroll-mt-20"
       >
         {/* Background Image */}
         <div 
@@ -199,13 +274,13 @@ function App() {
               >
                 Get in Touch
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
-                onClick={() => scrollToSection('experience')}
+                onClick={() => scrollToSection('projects')}
               >
-                View Experience
+                View Projects
               </Button>
             </div>
           </div>
@@ -217,10 +292,10 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section 
-        id="about" 
+      <section
+        id="about"
         ref={setRef('about')}
-        className="py-20 sm:py-32"
+        className="py-20 sm:py-32 scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-1000 ${isVisible['about'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -331,10 +406,10 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section 
-        id="experience" 
+      <section
+        id="experience"
         ref={setRef('experience')}
-        className="py-20 sm:py-32 bg-secondary/30"
+        className="py-20 sm:py-32 bg-secondary/30 scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-1000 ${isVisible['experience'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -465,7 +540,7 @@ function App() {
       <section
         id="projects"
         ref={setRef('projects')}
-        className="relative py-20 sm:py-32 overflow-hidden"
+        className="relative py-20 sm:py-32 overflow-hidden scroll-mt-20"
       >
         {/* Subtle ambient amber glow + grid texture for a futuristic engineering feel */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -511,10 +586,13 @@ function App() {
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
                   {/* Image */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-                      style={{ backgroundImage: `url(${project.image})` }}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-secondary/40">
+                    <img
+                      src={project.image}
+                      alt={project.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                     />
                     {/* Gradient overlay to blend image into card */}
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
@@ -576,7 +654,7 @@ function App() {
       <section
         id="education"
         ref={setRef('education')}
-        className="py-20 sm:py-32"
+        className="py-20 sm:py-32 scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-1000 ${isVisible['education'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -624,10 +702,10 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section 
-        id="contact" 
+      <section
+        id="contact"
         ref={setRef('contact')}
-        className="py-20 sm:py-32 bg-secondary/30"
+        className="py-20 sm:py-32 bg-secondary/30 scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-1000 ${isVisible['contact'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -762,6 +840,17 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating back-to-top button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-amber-500 text-background shadow-lg shadow-amber-500/30 hover:bg-amber-400 hover:shadow-amber-500/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 ${
+          showTopBtn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
     </div>
   )
 }

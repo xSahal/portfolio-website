@@ -54,6 +54,19 @@
   }
 }
 
+/* Keyboard accessibility — visible amber focus ring across the site */
+@layer base {
+  :focus-visible {
+    outline: 2px solid hsl(43 74% 52% / 0.7);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Don't show outlines on mouse click — only when navigating by keyboard */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
