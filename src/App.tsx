@@ -18,7 +18,6 @@ import {
   CheckCircle2,
   ArrowRight,
   Layers,
-  Network,
   Database,
   Boxes,
   Wrench,
@@ -81,45 +80,45 @@ function App() {
 
   const featuredProjects = [
     {
-      title: 'Red Sea Golf Course Infrastructure',
+      title: 'Diriyah Golf Course Infrastructure',
       category: 'BIM Coordination',
       description:
-        'Coordinated irrigation, utilities, roadworks and landscape systems across a large-scale golf course development on the Red Sea coast.',
+        'Managed the asset register and COBie asset register across a 700,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
       image:
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
-      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC'],
+      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex'],
       features: [
+        { icon: Database, label: 'Asset Register' },
+        { icon: FileCheck, label: 'COBie Register' },
         { icon: Layers, label: 'Coordination' },
-        { icon: Network, label: 'Clash Detection' },
-        { icon: Database, label: 'Asset Delivery' },
       ],
     },
     {
-      title: 'Mixed-Use Development',
+      title: 'Red Sea Coastal Village',
       category: 'BIM Coordination',
       description:
-        'Coordinated architectural, structural and MEP models to ensure a clash-free and constructible digital environment.',
+        'Coordinated multidisciplinary BIM models for a coastal village development along the Red Sea, supporting infrastructure delivery and constructible model coordination across disciplines.',
       image:
-        'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&auto=format&fit=crop&q=80',
-      skills: ['Revit', 'Navisworks', 'ACC', 'Dynamo'],
+        'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&auto=format&fit=crop&q=80',
+      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Aconex', 'Revizto'],
       features: [
-        { icon: Network, label: 'Clash Detection' },
         { icon: Boxes, label: 'Model Coordination' },
         { icon: AlertCircle, label: 'Issue Tracking' },
+        { icon: Layers, label: 'Coordination' },
       ],
     },
     {
-      title: 'Infrastructure Utilities',
-      category: 'BIM Coordination',
+      title: 'Wadi Greening',
+      category: 'BIM Modeling',
       description:
-        'Delivered coordinated utility models and structured asset information for seamless operations and maintenance handover.',
+        'Produced detailed Revit models and generated IFC drawings for a wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
       image:
-        'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1200&auto=format&fit=crop&q=80',
-      skills: ['Revit', 'Civil 3D', 'Navisworks', 'COBie'],
+        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
+      skills: ['Revit', 'AutoCAD', 'Civil 3D', 'IFC'],
       features: [
-        { icon: Wrench, label: 'Utility Coordination' },
-        { icon: Database, label: 'Asset Information' },
-        { icon: FileCheck, label: 'Handover' },
+        { icon: Boxes, label: 'Revit Modeling' },
+        { icon: FileCheck, label: 'IFC Drawings' },
+        { icon: Wrench, label: 'Design Support' },
       ],
     },
   ]
