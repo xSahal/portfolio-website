@@ -86,7 +86,7 @@ function App() {
         'Managed the asset register and COBie asset register across a 700,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
       image:
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
-      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex'],
+      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex', 'Automation', 'Script'],
       features: [
         { icon: Database, label: 'Asset Register' },
         { icon: FileCheck, label: 'COBie Register' },
@@ -114,7 +114,7 @@ function App() {
         'Produced detailed Revit models and generated IFC drawings for a wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
-      skills: ['Revit', 'AutoCAD', 'Civil 3D', 'IFC'],
+      skills: ['Revit', 'Navisworks', 'Civil 3D', 'Automation', 'Script'],
       features: [
         { icon: Boxes, label: 'Revit Modeling' },
         { icon: FileCheck, label: 'IFC Drawings' },
