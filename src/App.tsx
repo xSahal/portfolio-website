@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Briefcase, 
-  GraduationCap, 
-  Code2, 
-  User, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  Code2,
+  User,
   ChevronDown,
   Linkedin,
   ExternalLink,
@@ -15,7 +15,15 @@ import {
   Calendar,
   Award,
   Languages,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight,
+  Layers,
+  Network,
+  Database,
+  Boxes,
+  Wrench,
+  FileCheck,
+  AlertCircle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -71,6 +79,51 @@ function App() {
     'Supervising', 'CAD'
   ]
 
+  const featuredProjects = [
+    {
+      title: 'Red Sea Golf Course Infrastructure',
+      category: 'BIM Coordination',
+      description:
+        'Coordinated irrigation, utilities, roadworks and landscape systems across a large-scale golf course development on the Red Sea coast.',
+      image:
+        'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
+      skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC'],
+      features: [
+        { icon: Layers, label: 'Coordination' },
+        { icon: Network, label: 'Clash Detection' },
+        { icon: Database, label: 'Asset Delivery' },
+      ],
+    },
+    {
+      title: 'Mixed-Use Development',
+      category: 'BIM Coordination',
+      description:
+        'Coordinated architectural, structural and MEP models to ensure a clash-free and constructible digital environment.',
+      image:
+        'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&auto=format&fit=crop&q=80',
+      skills: ['Revit', 'Navisworks', 'ACC', 'Dynamo'],
+      features: [
+        { icon: Network, label: 'Clash Detection' },
+        { icon: Boxes, label: 'Model Coordination' },
+        { icon: AlertCircle, label: 'Issue Tracking' },
+      ],
+    },
+    {
+      title: 'Infrastructure Utilities',
+      category: 'BIM Coordination',
+      description:
+        'Delivered coordinated utility models and structured asset information for seamless operations and maintenance handover.',
+      image:
+        'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1200&auto=format&fit=crop&q=80',
+      skills: ['Revit', 'Civil 3D', 'Navisworks', 'COBie'],
+      features: [
+        { icon: Wrench, label: 'Utility Coordination' },
+        { icon: Database, label: 'Asset Information' },
+        { icon: FileCheck, label: 'Handover' },
+      ],
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -82,7 +135,7 @@ function App() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                {['Home', 'About', 'Experience', 'Education', 'Contact'].map((item) => (
+                {['Home', 'About', 'Experience', 'Projects', 'Education', 'Contact'].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
@@ -409,9 +462,120 @@ function App() {
         </div>
       </section>
 
+      {/* Featured Projects Section */}
+      <section
+        id="projects"
+        ref={setRef('projects')}
+        className="relative py-20 sm:py-32 overflow-hidden"
+      >
+        {/* Subtle ambient amber glow + grid texture for a futuristic engineering feel */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'linear-gradient(hsl(43 74% 52%) 1px, transparent 1px), linear-gradient(90deg, hsl(43 74% 52%) 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/10 blur-[120px] rounded-full" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`transition-all duration-1000 ${isVisible['projects'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Section header: title left, action right (reference layout) */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+              <div className="text-center md:text-left">
+                <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
+                  Featured Projects
+                </Badge>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-serif">
+                  Projects I've <span className="text-gradient">Worked On</span>
+                </h2>
+                <p className="text-muted-foreground max-w-xl">
+                  A selection of infrastructure and BIM coordination work delivered across
+                  mega developments in Saudi Arabia.
+                </p>
+              </div>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="group inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em] whitespace-nowrap self-center md:self-end"
+              >
+                View All Projects
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </div>
+
+            {/* Projects grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {featuredProjects.map((project, index) => (
+                <Card
+                  key={project.title}
+                  className="group bg-card/50 border-border/50 hover:border-amber-500/40 transition-all duration-500 overflow-hidden hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-amber-500/10"
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
+                    {/* Gradient overlay to blend image into card */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                    {/* Subtle amber accent line on hover */}
+                    <div className="absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-700 group-hover:w-full" />
+                    {/* Category chip on the image */}
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-background/70 text-amber-400 border border-amber-500/40 backdrop-blur-md uppercase tracking-[0.12em] text-[10px] font-semibold px-2.5 py-1">
+                        {project.category}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 font-serif leading-snug group-hover:text-amber-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                      {project.description}
+                    </p>
+
+                    {/* Skills tags */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.skills.map((skill) => (
+                        <Badge
+                          key={skill}
+                          variant="outline"
+                          className="bg-secondary/40 text-foreground/75 border-border/60 text-[11px] font-normal px-2.5 py-0.5 hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    <Separator className="bg-border/40 mb-4" />
+
+                    {/* Feature icons row */}
+                    <div className="flex flex-wrap gap-x-5 gap-y-2">
+                      {project.features.map(({ icon: Icon, label }) => (
+                        <div
+                          key={label}
+                          className="flex items-center gap-1.5 text-xs text-muted-foreground"
+                        >
+                          <Icon className="w-3.5 h-3.5 text-amber-400/80" />
+                          <span>{label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Education Section */}
-      <section 
-        id="education" 
+      <section
+        id="education"
         ref={setRef('education')}
         className="py-20 sm:py-32"
       >
