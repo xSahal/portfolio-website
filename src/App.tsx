@@ -147,8 +147,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
+      {/* Navigation — solid bg fallback so it stays visible even when adblockers
+          / privacy extensions disable backdrop-filter for fingerprinting reasons */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
@@ -156,7 +157,7 @@ function App() {
               className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded"
               aria-label="Back to top"
             >
-              <span className="text-xl font-bold text-gradient font-serif">SA</span>
+              <span className="text-xl font-bold text-amber-400 font-serif tracking-wider">SA</span>
             </button>
 
             {/* Desktop nav */}
@@ -188,11 +189,11 @@ function App() {
             {/* Right side: Hire Me + mobile hamburger */}
             <div className="flex items-center gap-2">
               <Button
+                asChild
                 size="sm"
                 className="bg-amber-500 hover:bg-amber-600 text-background"
-                onClick={() => window.open('mailto:alshethrisahal@gmail.com')}
               >
-                Hire Me
+                <a href="mailto:alshethrisahal@gmail.com">Hire Me</a>
               </Button>
               <button
                 className="md:hidden p-2 text-muted-foreground hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded"
@@ -850,23 +851,31 @@ function App() {
                     Let's discuss how I can contribute to your team.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button 
-                      size="lg" 
+                    <Button
+                      asChild
+                      size="lg"
                       className="bg-amber-500 hover:bg-amber-600 text-background"
-                      onClick={() => window.open('mailto:alshethrisahal@gmail.com')}
                     >
-                      <Mail className="w-4 h-4 mr-2" />
-                      Send Email
+                      <a href="mailto:alshethrisahal@gmail.com">
+                        <Mail className="w-4 h-4 mr-2" />
+                        Send Email
+                      </a>
                     </Button>
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
+                    <Button
+                      asChild
+                      size="lg"
+                      variant="outline"
                       className="border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
-                      onClick={() => window.open('https://www.linkedin.com/in/sahal-alshethri-599186183', '_blank')}
                     >
-                      <Linkedin className="w-4 h-4 mr-2" />
-                      LinkedIn Profile
-                      <ExternalLink className="w-4 h-4 ml-2" />
+                      <a
+                        href="https://www.linkedin.com/in/sahal-alshethri-599186183"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Linkedin className="w-4 h-4 mr-2" />
+                        LinkedIn Profile
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
@@ -881,7 +890,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-gradient font-serif">SA</span>
+              <span className="text-xl font-bold text-amber-400 font-serif tracking-wider">SA</span>
               <span className="text-muted-foreground">|</span>
               <span className="text-muted-foreground text-sm">Sahal Alshethri</span>
             </div>
