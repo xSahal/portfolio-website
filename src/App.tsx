@@ -572,7 +572,7 @@ function App() {
               <span className="text-muted-foreground text-sm">Sahal Alshethri</span>
             </div>
             <p className="text-muted-foreground text-sm text-center">
-              © 2024 Sahal Alshethri. All rights reserved.
+              © 2026 Sahal Alshethri. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <a 
