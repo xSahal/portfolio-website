@@ -24,7 +24,9 @@ import {
   FileCheck,
   AlertCircle,
   Menu,
-  X
+  X,
+  Droplet,
+  Sprout
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -142,6 +144,33 @@ function App() {
         { icon: FileCheck, label: 'IFC Drawings' },
         { icon: Wrench, label: 'Design Support' },
       ],
+    },
+  ]
+
+  const additionalProjects = [
+    {
+      title: 'Ashfur & Turbah Desalination Towers',
+      role: 'Shop Drawings',
+      icon: Droplet,
+      description:
+        'Produced shop drawings for two water desalination plant towers in Ashfur and Turbah, Saudi Arabia.',
+      tools: ['AutoCAD'],
+    },
+    {
+      title: 'Madinah Project',
+      role: 'Shop Drawings',
+      icon: Building2,
+      description:
+        'Contributed to shop drawing production as part of the project delivery team.',
+      tools: ['AutoCAD'],
+    },
+    {
+      title: 'Roshn Nursery — Riyadh & Jeddah',
+      role: 'Shop Drawings + Site Supervision',
+      icon: Sprout,
+      description:
+        'Produced shop drawings and visited the site to supervise nursery construction across Riyadh and Jeddah locations.',
+      tools: ['AutoCAD', 'Site Supervision'],
     },
   ]
 
@@ -588,6 +617,55 @@ function App() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Additional smaller contributions — compact cards, no images */}
+            <div className="mt-16 sm:mt-20 pt-10 border-t border-border/40">
+              <div className="text-center mb-10">
+                <Badge className="mb-3 bg-amber-500/15 text-amber-400 border-amber-500/30 text-[10px] uppercase tracking-[0.15em]">
+                  Additional Contributions
+                </Badge>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white font-serif">
+                  Other Projects I've <span className="text-gradient">Contributed To</span>
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {additionalProjects.map(({ title, role, icon: Icon, description, tools }) => (
+                  <div
+                    key={title}
+                    className="group bg-card/40 border border-border/40 rounded-lg p-5 hover:border-amber-500/40 hover:bg-card/60 hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="p-2 bg-amber-500/10 rounded-md flex-shrink-0 border border-amber-500/20">
+                        <Icon className="w-4 h-4 text-amber-400" strokeWidth={1.75} />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-base font-semibold text-white leading-tight mb-1 group-hover:text-amber-400 transition-colors">
+                          {title}
+                        </h4>
+                        <p className="text-[10px] uppercase tracking-[0.15em] text-amber-400/80 font-semibold">
+                          {role}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {tools.map((tool) => (
+                        <Badge
+                          key={tool}
+                          variant="outline"
+                          className="bg-secondary/40 text-foreground/75 border-border/60 text-[10px] font-normal px-2 py-0.5"
+                        >
+                          {tool}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
