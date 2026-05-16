@@ -541,10 +541,10 @@ function App() {
                 </p>
               </div>
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('additional-projects')}
                 className="group inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em] whitespace-nowrap self-center md:self-end"
               >
-                View All Projects
+                See More Projects
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
@@ -620,7 +620,7 @@ function App() {
             </div>
 
             {/* Additional smaller contributions — compact cards, no images */}
-            <div className="mt-16 sm:mt-20 pt-10 border-t border-border/40">
+            <div id="additional-projects" className="mt-16 sm:mt-20 pt-10 border-t border-border/40 scroll-mt-24">
               <div className="text-center mb-10">
                 <Badge className="mb-3 bg-amber-500/15 text-amber-400 border-amber-500/30 text-[10px] uppercase tracking-[0.15em]">
                   Additional Contributions
