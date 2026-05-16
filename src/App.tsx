@@ -117,7 +117,7 @@ function App() {
       title: 'Red Sea Coastal Village',
       category: 'BIM Coordination',
       description:
-        'Coordinated multidisciplinary BIM models for a coastal village development along the Red Sea, supporting infrastructure delivery and constructible model coordination across disciplines.',
+        'Coordinated multidisciplinary BIM models for a 1.5 million m² coastal village development along the Red Sea, supporting infrastructure delivery and constructible model coordination across disciplines.',
       image:
         'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial of coastal overwater villas representing a Red Sea coastal village development',
@@ -132,7 +132,7 @@ function App() {
       title: 'Wadi Greening',
       category: 'BIM Modeling',
       description:
-        'Produced detailed Revit models and generated IFC drawings for a wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
+        'Produced detailed Revit models and generated IFC drawings for a 15 million m² wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
       alt: 'Desert valley landscape representing a wadi greening and rehabilitation project',
