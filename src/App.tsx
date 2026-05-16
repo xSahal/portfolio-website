@@ -6,8 +6,7 @@ import {
   MapPin,
   Briefcase,
   GraduationCap,
-  Code2,
-  User,
+  Cpu,
   ChevronDown,
   Linkedin,
   ExternalLink,
@@ -50,7 +49,9 @@ function App() {
           }
         })
       },
-      { threshold: 0.25, rootMargin: '-80px 0px -40% 0px' }
+      // Low threshold so tall sections still trigger on small mobile viewports.
+      // rootMargin pulls the active-section line up (under the fixed nav) and into mid-screen.
+      { threshold: 0.05, rootMargin: '-80px 0px -40% 0px' }
     )
 
     Object.values(sectionsRef.current).forEach((section) => {
@@ -92,8 +93,8 @@ function App() {
   ]
 
   const personalSkills = [
-    'Adaptable', 'Quick Learner', 'Self-learning', 'On-Time Task Completion',
-    'Supervising', 'CAD'
+    'Cross-team Coordination', 'Reliable Delivery', 'Continuous Learning',
+    'Team Supervision', 'Process Documentation', 'Adaptability'
   ]
 
   const featuredProjects = [
@@ -259,16 +260,13 @@ function App() {
               Design Engineer
             </p>
             <p className="max-w-2xl mx-auto text-muted-foreground mb-10 text-base sm:text-lg leading-relaxed">
-              BIM Coordinator and Design Engineer with experience in infrastructure and
-              landscape projects across Saudi Arabia. Skilled in multidisciplinary BIM
-              coordination, asset information management, COBie workflows, shop drawings,
-              and model integration using Revit, Navisworks, and AutoCAD. Contributed to
-              mega projects through coordination, technical documentation, and BIM-based
-              project delivery.
+              Delivering infrastructure and landscape mega-projects across Saudi Arabia
+              through multidisciplinary BIM coordination, asset information management,
+              and COBie-driven workflows.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-amber-500 hover:bg-amber-600 text-background"
                 onClick={() => scrollToSection('contact')}
               >
@@ -291,6 +289,63 @@ function App() {
         </div>
       </section>
 
+      {/* Credibility Stats Band — standalone strip between hero and about */}
+      <section
+        aria-label="Credibility highlights"
+        className="relative py-10 sm:py-14 bg-secondary/40 border-y border-border/40"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50">
+            {[
+              {
+                icon: Calendar,
+                value: '2+',
+                label: 'Years Experience',
+                description: 'Architecture, BIM Coordination & Design Engineering',
+              },
+              {
+                icon: Boxes,
+                value: '3+',
+                label: 'Mega Projects',
+                description: 'Infrastructure, Landscape & Coastal developments',
+              },
+              {
+                icon: Layers,
+                value: '700K',
+                label: 'm² Coordinated',
+                description: 'Across the Diriyah Golf Course masterplan',
+              },
+              {
+                icon: Cpu,
+                value: '10+',
+                label: 'BIM Tools',
+                description: 'Revit, Navisworks, Civil 3D, Dynamo, COBie & more',
+              },
+            ].map(({ icon: Icon, value, label, description }) => (
+              <div
+                key={label}
+                className="flex items-start gap-4 lg:px-8 first:lg:pl-0 last:lg:pr-0"
+              >
+                <div className="flex-shrink-0 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5">
+                  <Icon className="w-6 h-6 text-amber-400" strokeWidth={1.5} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient font-serif leading-none mb-2">
+                    {value}
+                  </div>
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground mb-1.5">
+                    {label}
+                  </div>
+                  <div className="text-xs text-muted-foreground leading-snug">
+                    {description}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section
         id="about"
@@ -299,7 +354,7 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-1000 ${isVisible['about'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
                 About Me
               </Badge>
@@ -311,13 +366,26 @@ function App() {
               </p>
             </div>
 
+            {/* Personal intro — humanizes the skill chips below */}
+            <div className="max-w-3xl mx-auto mb-14 text-center">
+              <p className="text-base sm:text-lg text-foreground/85 leading-relaxed">
+                I'm an Architect-turned-BIM Coordinator with hands-on experience delivering
+                complex infrastructure and landscape developments across Saudi Arabia. I bridge
+                <span className="text-amber-400"> design intent </span>
+                and
+                <span className="text-amber-400"> constructible delivery </span>
+                through structured BIM workflows, asset information management, and
+                multidisciplinary coordination — supporting mega-projects from masterplan to handover.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Software Skills */}
               <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-3 bg-amber-500/10 rounded-lg">
-                      <Code2 className="w-6 h-6 text-amber-400" />
+                      <Cpu className="w-6 h-6 text-amber-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white">Software</h3>
                   </div>
@@ -358,14 +426,14 @@ function App() {
                 </CardContent>
               </Card>
 
-              {/* Personal Skills */}
+              {/* Strengths */}
               <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-3 bg-amber-500/10 rounded-lg">
-                      <User className="w-6 h-6 text-amber-400" />
+                      <Award className="w-6 h-6 text-amber-400" />
                     </div>
-                    <h3 className="text-xl font-semibold text-white">Personal</h3>
+                    <h3 className="text-xl font-semibold text-white">Strengths</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {personalSkills.map((skill) => (
@@ -398,137 +466,6 @@ function App() {
                       English (Fluent)
                     </Badge>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section
-        id="experience"
-        ref={setRef('experience')}
-        className="py-20 sm:py-32 bg-secondary/30 scroll-mt-20"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`transition-all duration-1000 ${isVisible['experience'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="text-center mb-16">
-              <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
-                Work Experience
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-serif">
-                Professional <span className="text-gradient">Journey</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                My career progression in architecture and BIM coordination
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {/* Current Position */}
-              <Card className="bg-card/50 border-amber-500/30 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
-                <CardContent className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">Design Engineer</h3>
-                      <div className="flex items-center gap-2 text-amber-400">
-                        <Building2 className="w-4 h-4" />
-                        <span className="font-medium">Citiscape</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="w-4 h-4" />
-                      <span>Oct 2023 - Present</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                    <MapPin className="w-4 h-4" />
-                    <span>Riyadh, Saudi Arabia</span>
-                  </div>
-                  <p className="text-muted-foreground mb-6">
-                    Contributing to major projects through BIM coordination, asset register creation, 
-                    and shop drawings, supporting multiple projects execution.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Managed asset information and COBie-related data for infrastructure projects during BIM coordination workflows.',
-                      'Coordinated multidisciplinary BIM models using Revit and Navisworks for large-scale infrastructure developments.',
-                      'Assisted in delivery of shop drawings and model coordination for mega projects including irrigation networks and landscape infrastructure.',
-                      'Supported model integration, clash coordination, and asset data preparation across project disciplines.'
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Previous Position */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">Designer</h3>
-                      <div className="flex items-center gap-2 text-amber-400">
-                        <Building2 className="w-4 h-4" />
-                        <span className="font-medium">U. Oasis Consultant Engineering</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="w-4 h-4" />
-                      <span>Jul 2023 - Sep 2023</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                    <MapPin className="w-4 h-4" />
-                    <span>Khobar, Saudi Arabia</span>
-                  </div>
-                  <p className="text-muted-foreground mb-6">
-                    Designed a coffee shop in Hail and contributed to palace design in Al Hizam Al Thahabi, 
-                    developing initial interior plans and concept visuals.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Designed a coffee shop in Hail from concept to completion',
-                      'Took part in palace design in Al Hizam Al Thahabi',
-                      'Developed initial interior plans and concept visuals'
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Volunteer Experience */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">Volunteer Exhibitor</h3>
-                      <div className="flex items-center gap-2 text-amber-400">
-                        <Award className="w-4 h-4" />
-                        <span className="font-medium">Ministry of Environment, Water and Agriculture</span>
-                      </div>
-                    </div>
-                  </div>
-                  <ul className="space-y-3">
-                    {[
-                      'Represented the university by presenting university projects',
-                      'Focused on combating desertification and promoting environmental preservation'
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </CardContent>
               </Card>
             </div>
@@ -650,6 +587,137 @@ function App() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section
+        id="experience"
+        ref={setRef('experience')}
+        className="py-20 sm:py-32 bg-secondary/30 scroll-mt-20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`transition-all duration-1000 ${isVisible['experience'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="text-center mb-16">
+              <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
+                Work Experience
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-serif">
+                Professional <span className="text-gradient">Journey</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                My career progression in architecture and BIM coordination
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Current Position */}
+              <Card className="bg-card/50 border-amber-500/30 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Design Engineer</h3>
+                      <div className="flex items-center gap-2 text-amber-400">
+                        <Building2 className="w-4 h-4" />
+                        <span className="font-medium">Citiscape</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Calendar className="w-4 h-4" />
+                      <span>Oct 2023 - Present</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                    <MapPin className="w-4 h-4" />
+                    <span>Riyadh, Saudi Arabia</span>
+                  </div>
+                  <p className="text-muted-foreground mb-6">
+                    Driving multidisciplinary BIM coordination and asset information management
+                    across mega infrastructure and landscape projects.
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      'Managed asset information and COBie-related data for infrastructure projects during BIM coordination workflows.',
+                      'Coordinated multidisciplinary BIM models using Revit and Navisworks for large-scale infrastructure developments.',
+                      'Assisted in delivery of shop drawings and model coordination for mega projects including irrigation networks and landscape infrastructure.',
+                      'Supported model integration, clash coordination, and asset data preparation across project disciplines.'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Previous Position */}
+              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Designer</h3>
+                      <div className="flex items-center gap-2 text-amber-400">
+                        <Building2 className="w-4 h-4" />
+                        <span className="font-medium">U. Oasis Consultant Engineering</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Calendar className="w-4 h-4" />
+                      <span>Jul 2023 - Sep 2023</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                    <MapPin className="w-4 h-4" />
+                    <span>Khobar, Saudi Arabia</span>
+                  </div>
+                  <p className="text-muted-foreground mb-6">
+                    Designed a coffee shop in Hail and contributed to palace design in Al Hizam Al Thahabi,
+                    developing initial interior plans and concept visuals.
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      'Designed a coffee shop in Hail from concept to completion',
+                      'Took part in palace design in Al Hizam Al Thahabi',
+                      'Developed initial interior plans and concept visuals'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Volunteer Experience */}
+              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Volunteer Exhibitor</h3>
+                      <div className="flex items-center gap-2 text-amber-400">
+                        <Award className="w-4 h-4" />
+                        <span className="font-medium">Ministry of Environment, Water and Agriculture</span>
+                      </div>
+                    </div>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Represented the university by presenting university projects',
+                      'Focused on combating desertification and promoting environmental preservation'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Education Section */}
       <section
         id="education"
@@ -758,9 +826,14 @@ function App() {
                     <MapPin className="w-8 h-8 text-amber-400 mx-auto" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
-                  <span className="text-muted-foreground">
+                  <a
+                    href="https://www.google.com/maps/place/Al+Olaya,+Riyadh+Saudi+Arabia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-amber-400 transition-colors"
+                  >
                     Riyadh, Al Olaya, SA
-                  </span>
+                  </a>
                 </CardContent>
               </Card>
             </div>
