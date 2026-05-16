@@ -152,22 +152,17 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo: anchor with a real visible badge box so it survives
-                aggressive adblocker filters that hide bare text "back-to-top" buttons */}
+            {/* Logo: plain anchor (no aria-label "Back to top" — that exact phrase
+                gets caught by generic adblocker UI filters) */}
             <a
               href="#home"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection('home')
               }}
-              className="flex-shrink-0 flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md"
+              className="flex-shrink-0 text-2xl font-bold text-amber-400 font-serif tracking-widest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded px-1"
             >
-              <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-400 font-serif font-bold text-base tracking-wider shadow-sm">
-                SA
-              </span>
-              <span className="hidden sm:inline text-sm font-semibold text-foreground/90">
-                Sahal Alshethri
-              </span>
+              SA
             </a>
 
             {/* Desktop nav */}
