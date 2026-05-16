@@ -300,7 +300,7 @@ function App() {
             {[
               {
                 icon: Calendar,
-                value: '2+',
+                value: '3+',
                 label: 'Years Experience',
                 description: 'Architecture, BIM Coordination & Design Engineering',
               },
@@ -828,12 +828,12 @@ function App() {
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
                   <a
-                    href="https://www.google.com/maps/place/Al+Olaya,+Riyadh+Saudi+Arabia"
+                    href="https://www.google.com/maps/place/Riyadh+Saudi+Arabia"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-amber-400 transition-colors"
                   >
-                    Riyadh, Al Olaya, SA
+                    Riyadh, SA
                   </a>
                 </CardContent>
               </Card>
