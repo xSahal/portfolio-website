@@ -102,7 +102,7 @@ function App() {
       title: 'Diriyah Golf Course Infrastructure',
       category: 'BIM Coordination',
       description:
-        'Managed the asset register and COBie asset register across a 700,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
+        'Managed the asset register and COBie asset register across a 780,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
       image:
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial view of a sweeping golf course coastline representing the Diriyah masterplan',
@@ -311,7 +311,7 @@ function App() {
               },
               {
                 icon: Layers,
-                value: '4.6M',
+                value: '4.7M',
                 label: 'm² Coordinated',
                 description: 'Across infrastructure, coastal & landscape mega-projects',
               },
