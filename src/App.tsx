@@ -136,7 +136,7 @@ function App() {
         { icon: Layers, value: 'Model Coordination', label: 'Scope' },
       ],
       features: [
-        { icon: Boxes, label: 'Model Coordination' },
+        { icon: Boxes, label: 'Modeling' },
         { icon: AlertCircle, label: 'Issue Tracking' },
         { icon: Layers, label: 'Coordination' },
       ],
@@ -641,8 +641,9 @@ function App() {
 
                       <Separator className="bg-border/40 mb-4" />
 
-                      {/* Feature icons row — always 3 in a row via grid-cols-3 */}
-                      <div className="grid grid-cols-3 gap-2">
+                      {/* Feature icons row — features take natural width and the whole
+                          group is centered horizontally in the card */}
+                      <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
                         {project.features.map(({ icon: Icon, label }) => (
                           <div
                             key={label}
