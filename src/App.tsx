@@ -570,7 +570,7 @@ function App() {
               {featuredProjects.map((project, index) => (
                 <Card
                   key={project.title}
-                  className="group bg-card/50 border-border/50 hover:border-amber-500/40 transition-all duration-500 overflow-hidden hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-amber-500/10"
+                  className="group h-full flex flex-col bg-card/50 border-border/50 hover:border-amber-500/40 transition-all duration-500 overflow-hidden hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-amber-500/10"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
                   {/* Image */}
@@ -595,7 +595,7 @@ function App() {
                   </div>
 
                   {/* Content */}
-                  <CardContent className="p-6">
+                  <CardContent className="px-6 pt-6 pb-4 flex-1 flex flex-col">
                     <h3 className="text-xl font-bold text-white mb-4 font-serif leading-snug group-hover:text-amber-400 transition-colors duration-300">
                       {project.title}
                     </h3>
@@ -635,19 +635,20 @@ function App() {
                       ))}
                     </div>
 
-                    <Separator className="bg-border/40 mb-4" />
-
-                    {/* Feature icons row */}
-                    <div className="flex flex-wrap gap-x-5 gap-y-2">
-                      {project.features.map(({ icon: Icon, label }) => (
-                        <div
-                          key={label}
-                          className="flex items-center gap-1.5 text-xs text-muted-foreground"
-                        >
-                          <Icon className="w-3.5 h-3.5 text-amber-400/80" />
-                          <span>{label}</span>
-                        </div>
-                      ))}
+                    {/* Feature icons row — pinned to bottom via mt-auto so all cards align */}
+                    <div className="mt-auto">
+                      <Separator className="bg-border/40 mb-4" />
+                      <div className="grid grid-cols-3 gap-2">
+                        {project.features.map(({ icon: Icon, label }) => (
+                          <div
+                            key={label}
+                            className="flex items-center gap-1.5 text-[11px] text-muted-foreground leading-tight"
+                          >
+                            <Icon className="w-3.5 h-3.5 text-amber-400/80 flex-shrink-0" />
+                            <span>{label}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
