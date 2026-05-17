@@ -349,20 +349,31 @@ function App() {
 
       {/* Credibility Stats Band — two rows: scope/scale (top) + delivery output (bottom) */}
       <section
+        id="stats"
+        ref={setRef('stats')}
         aria-label="Credibility highlights"
         className="relative py-10 sm:py-14 bg-secondary/40 border-y border-border/40"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {(() => {
+            const visible = isVisible['stats']
+
             // Reusable stat cell renderer — keeps both rows visually consistent
-            // Hover effects: slight lift, icon glow, number drop-shadow, brighter accents
-            const StatCell = ({ icon: Icon, value, label, description }: {
+            // Hover: slight lift + icon glow + number drop-shadow + brighter accents
+            // Entry: staggered fade-up driven by IntersectionObserver on the section
+            const StatCell = ({ icon: Icon, value, label, description, index }: {
               icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
               value: string
               label: string
               description: string
+              index: number
             }) => (
-              <div className="group flex items-start gap-4 lg:px-6 first:lg:pl-0 last:lg:pr-0 transition-transform duration-300 ease-out hover:-translate-y-1 cursor-default">
+              <div
+                className={`group flex items-start gap-4 lg:px-6 first:lg:pl-0 last:lg:pr-0 transition-transform duration-300 ease-out hover:-translate-y-1 cursor-default ${
+                  visible ? 'animate-fade-in-up' : 'opacity-0'
+                }`}
+                style={visible ? { animationDelay: `${index * 80}ms` } : undefined}
+              >
                 <div className="flex-shrink-0 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 transition-all duration-300 ease-out group-hover:border-amber-500/60 group-hover:bg-amber-500/15 group-hover:shadow-[0_0_24px_-2px_rgba(245,158,11,0.35)]">
                   <Icon className="w-6 h-6 text-amber-400 transition-colors duration-300 group-hover:text-amber-300" strokeWidth={1.5} />
                 </div>
@@ -404,15 +415,15 @@ function App() {
               <>
                 {/* Top row: scope & scale (4 stats) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50">
-                  {scopeStats.map((s) => <StatCell key={s.label} {...s} />)}
+                  {scopeStats.map((s, i) => <StatCell key={s.label} {...s} index={i} />)}
                 </div>
 
                 {/* Divider between the two stat rows */}
                 <div className="my-10 border-t border-border/40" />
 
-                {/* Bottom row: delivery output (3 stats) */}
+                {/* Bottom row: delivery output (3 stats) — continues the stagger after top row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50 lg:max-w-5xl lg:mx-auto">
-                  {outputStats.map((s) => <StatCell key={s.label} {...s} />)}
+                  {outputStats.map((s, i) => <StatCell key={s.label} {...s} index={i + 4} />)}
                 </div>
               </>
             )
