@@ -311,9 +311,8 @@ function App() {
               Design Engineer
             </p>
             <p className="max-w-2xl mx-auto text-muted-foreground mb-10 text-base sm:text-lg leading-relaxed">
-              Delivering infrastructure and landscape mega-projects across Saudi Arabia
-              through multidisciplinary BIM coordination, asset information management,
-              and COBie-driven workflows.
+              BIM coordination and asset information delivery for infrastructure and
+              landscape mega-projects across Saudi Arabia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
