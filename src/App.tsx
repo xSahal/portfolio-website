@@ -27,7 +27,8 @@ import {
   X,
   Droplet,
   Sprout,
-  Maximize2
+  Maximize2,
+  Download
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -316,11 +317,18 @@ function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
+                asChild
                 size="lg"
-                className="bg-amber-500 hover:bg-amber-600 text-background"
-                onClick={() => scrollToSection('contact')}
+                className="bg-amber-500 hover:bg-amber-600 text-background shadow-lg shadow-amber-500/20"
               >
-                Get in Touch
+                <a
+                  href="/Sahal_Alshethri_CV.pdf"
+                  download="Sahal_Alshethri_CV.pdf"
+                  aria-label="Download Sahal Alshethri's CV as PDF"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download CV
+                </a>
               </Button>
               <Button
                 size="lg"
