@@ -26,7 +26,8 @@ import {
   Menu,
   X,
   Droplet,
-  Sprout
+  Sprout,
+  Maximize2
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -109,6 +110,11 @@ function App() {
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial view of a sweeping golf course coastline representing the Diriyah masterplan',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex', 'Automation', 'Script'],
+      metrics: [
+        { icon: Maximize2, value: '780,000 m²', label: 'Project Area' },
+        { icon: Layers, value: 'Multi-Discipline', label: 'Coordination' },
+        { icon: FileCheck, value: 'COBie', label: 'Asset Standard' },
+      ],
       features: [
         { icon: Database, label: 'Asset Register' },
         { icon: FileCheck, label: 'COBie Register' },
@@ -124,6 +130,11 @@ function App() {
         'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial of coastal overwater villas representing a Red Sea coastal village development',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Aconex', 'Revizto'],
+      metrics: [
+        { icon: Maximize2, value: '1.5M m²', label: 'Project Area' },
+        { icon: Building2, value: 'Coastal Village', label: 'Development' },
+        { icon: Layers, value: 'Multi-Discipline', label: 'BIM Coordination' },
+      ],
       features: [
         { icon: Boxes, label: 'Model Coordination' },
         { icon: AlertCircle, label: 'Issue Tracking' },
@@ -139,6 +150,11 @@ function App() {
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
       alt: 'Desert valley landscape representing a wadi greening and rehabilitation project',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'Automation', 'Script'],
+      metrics: [
+        { icon: Maximize2, value: '2,416,033 m²', label: 'Project Area' },
+        { icon: Sprout, value: 'Desert Greening', label: 'Initiative Type' },
+        { icon: FileCheck, value: 'Revit + IFC', label: 'Deliverables' },
+      ],
       features: [
         { icon: Boxes, label: 'Revit Modeling' },
         { icon: FileCheck, label: 'IFC Drawings' },
@@ -580,9 +596,28 @@ function App() {
 
                   {/* Content */}
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3 font-serif leading-snug group-hover:text-amber-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-4 font-serif leading-snug group-hover:text-amber-400 transition-colors duration-300">
                       {project.title}
                     </h3>
+
+                    {/* Mini metrics strip — quick scannable project facts */}
+                    <div className="grid grid-cols-3 gap-2 mb-5">
+                      {project.metrics.map(({ icon: Icon, value, label }) => (
+                        <div
+                          key={label}
+                          className="p-2.5 rounded-md bg-secondary/40 border border-border/50 text-center"
+                        >
+                          <Icon className="w-4 h-4 text-amber-400 mx-auto mb-1.5" strokeWidth={1.75} />
+                          <div className="text-[11px] font-bold text-white leading-tight mb-1 break-words">
+                            {value}
+                          </div>
+                          <div className="text-[9px] uppercase tracking-[0.08em] text-muted-foreground leading-tight">
+                            {label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
                     <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                       {project.description}
                     </p>
