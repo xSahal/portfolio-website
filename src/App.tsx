@@ -355,21 +355,22 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {(() => {
             // Reusable stat cell renderer — keeps both rows visually consistent
+            // Hover effects: slight lift, icon glow, number drop-shadow, brighter accents
             const StatCell = ({ icon: Icon, value, label, description }: {
               icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
               value: string
               label: string
               description: string
             }) => (
-              <div className="flex items-start gap-4 lg:px-6 first:lg:pl-0 last:lg:pr-0">
-                <div className="flex-shrink-0 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5">
-                  <Icon className="w-6 h-6 text-amber-400" strokeWidth={1.5} />
+              <div className="group flex items-start gap-4 lg:px-6 first:lg:pl-0 last:lg:pr-0 transition-transform duration-300 ease-out hover:-translate-y-1 cursor-default">
+                <div className="flex-shrink-0 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 transition-all duration-300 ease-out group-hover:border-amber-500/60 group-hover:bg-amber-500/15 group-hover:shadow-[0_0_24px_-2px_rgba(245,158,11,0.35)]">
+                  <Icon className="w-6 h-6 text-amber-400 transition-colors duration-300 group-hover:text-amber-300" strokeWidth={1.5} />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-3xl sm:text-4xl font-bold text-gradient font-serif leading-none mb-2">
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient font-serif leading-none mb-2 transition-[filter] duration-300 group-hover:[filter:drop-shadow(0_0_14px_rgba(245,158,11,0.5))]">
                     {value}
                   </div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground mb-1.5">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground mb-1.5 transition-colors duration-300 group-hover:text-amber-100">
                     {label}
                   </div>
                   <div className="text-xs text-muted-foreground leading-snug">
