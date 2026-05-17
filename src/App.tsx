@@ -102,18 +102,18 @@ function App() {
 
   const featuredProjects = [
     {
-      title: 'Diriyah Golf Course Infrastructure',
+      title: 'Diriyah Golf Course',
       category: 'BIM Coordination',
       description:
-        'Managed the asset register and COBie asset register across a 780,000 m² golf course development in Diriyah. Coordinated irrigation, utilities, roadworks and landscape systems for the masterplan.',
+        'Managed asset information and COBie workflows for a 780,000 m² golf course development in Diriyah, coordinating irrigation, utilities and landscape systems.',
       image:
         'https://images.unsplash.com/photo-1535132011086-b8818f016104?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial view of a sweeping golf course coastline representing the Diriyah masterplan',
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Dynamo', 'Aconex', 'Automation', 'Script'],
       metrics: [
         { icon: Maximize2, value: '780,000 m²', label: 'Project Area' },
-        { icon: Layers, value: 'Multi-Discipline', label: 'Coordination' },
-        { icon: FileCheck, value: 'COBie', label: 'Asset Standard' },
+        { icon: Layers, value: 'Model Coordination', label: 'Scope' },
+        { icon: FileCheck, value: 'Asset Information', label: 'Workflow' },
       ],
       features: [
         { icon: Database, label: 'Asset Register' },
@@ -125,7 +125,7 @@ function App() {
       title: 'Red Sea Coastal Village',
       category: 'BIM Coordination',
       description:
-        'Coordinated multidisciplinary BIM models for a 1.5 million m² coastal village development along the Red Sea, supporting infrastructure delivery and constructible model coordination across disciplines.',
+        'Coordinated BIM models for a 1.5 million m² coastal village development along the Red Sea, supporting infrastructure delivery and constructible workflows across multiple disciplines.',
       image:
         'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&auto=format&fit=crop&q=80',
       alt: 'Aerial of coastal overwater villas representing a Red Sea coastal village development',
@@ -133,7 +133,7 @@ function App() {
       metrics: [
         { icon: Maximize2, value: '1.5M m²', label: 'Project Area' },
         { icon: Building2, value: 'Coastal Village', label: 'Development' },
-        { icon: Layers, value: 'Multi-Discipline', label: 'BIM Coordination' },
+        { icon: Layers, value: 'Model Coordination', label: 'Scope' },
       ],
       features: [
         { icon: Boxes, label: 'Model Coordination' },
@@ -145,7 +145,7 @@ function App() {
       title: 'Wadi Greening',
       category: 'BIM Modeling',
       description:
-        'Produced detailed Revit models and generated IFC drawings for a 2,416,033 m² wadi rehabilitation and desert-greening initiative, supporting design coordination and documentation.',
+        'Delivered Revit models and IFC documentation for a 2.4M m² wadi rehabilitation and desert greening initiative.',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80',
       alt: 'Desert valley landscape representing a wadi greening and rehabilitation project',
@@ -622,22 +622,26 @@ function App() {
                       {project.description}
                     </p>
 
-                    {/* Skills tags */}
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {project.skills.map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant="outline"
-                          className="bg-secondary/40 text-foreground/75 border-border/60 text-[11px] font-normal px-2.5 py-0.5 hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    {/* Feature icons row — pinned to bottom via mt-auto so all cards align */}
+                    {/* Entire bottom block pinned via mt-auto so skills + separator + features
+                        all align at the same vertical position across cards regardless of
+                        title / description length above */}
                     <div className="mt-auto">
+                      {/* Skills tags */}
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {project.skills.map((skill) => (
+                          <Badge
+                            key={skill}
+                            variant="outline"
+                            className="bg-secondary/40 text-foreground/75 border-border/60 text-[11px] font-normal px-2.5 py-0.5 hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+
                       <Separator className="bg-border/40 mb-4" />
+
+                      {/* Feature icons row — always 3 in a row via grid-cols-3 */}
                       <div className="grid grid-cols-3 gap-2">
                         {project.features.map(({ icon: Icon, label }) => (
                           <div
