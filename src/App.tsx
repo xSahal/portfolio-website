@@ -86,7 +86,7 @@ function App() {
 
   const softwareSkills = [
     'AutoCAD', 'Civil 3D', 'Revit', 'Navisworks', '3Ds Max', 'V-Ray',
-    'Lumion', 'Aconex', 'SAP', 'Microsoft Office'
+    'Lumion', 'Aconex'
   ]
 
   const professionalSkills = [
@@ -772,31 +772,6 @@ function App() {
                 </CardContent>
               </Card>
 
-              {/* Volunteer Experience */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">Volunteer Exhibitor</h3>
-                      <div className="flex items-center gap-2 text-amber-400">
-                        <Award className="w-4 h-4" />
-                        <span className="font-medium">Ministry of Environment, Water and Agriculture</span>
-                      </div>
-                    </div>
-                  </div>
-                  <ul className="space-y-3">
-                    {[
-                      'Represented the university by presenting university projects',
-                      'Focused on combating desertification and promoting environmental preservation'
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
