@@ -132,7 +132,7 @@ function App() {
       skills: ['Revit', 'Navisworks', 'Civil 3D', 'ACC', 'Aconex', 'Revizto'],
       metrics: [
         { icon: Maximize2, value: '1.5M m²', label: 'Project Area' },
-        { icon: Building2, value: 'Coastal Village', label: 'Development' },
+        { icon: FileCheck, value: 'Asset Information', label: 'Workflow' },
         { icon: Layers, value: 'Model Coordination', label: 'Scope' },
       ],
       features: [
