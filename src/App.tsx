@@ -347,43 +347,21 @@ function App() {
         </div>
       </section>
 
-      {/* Credibility Stats Band — standalone strip between hero and about */}
+      {/* Credibility Stats Band — two rows: scope/scale (top) + delivery output (bottom) */}
       <section
         aria-label="Credibility highlights"
         className="relative py-10 sm:py-14 bg-secondary/40 border-y border-border/40"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50">
-            {[
-              {
-                icon: Calendar,
-                value: '3+',
-                label: 'Years Experience',
-                description: 'Architecture, BIM Coordination & Design Engineering',
-              },
-              {
-                icon: Boxes,
-                value: '3+',
-                label: 'Mega Projects',
-                description: 'Infrastructure & Landscape developments',
-              },
-              {
-                icon: Layers,
-                value: '4.7M',
-                label: 'm² Coordinated',
-                description: 'Across infrastructure & landscape mega-projects',
-              },
-              {
-                icon: Cpu,
-                value: '10+',
-                label: 'BIM Tools',
-                description: 'Revit, Navisworks, Civil 3D, Dynamo, COBie & more',
-              },
-            ].map(({ icon: Icon, value, label, description }) => (
-              <div
-                key={label}
-                className="flex items-start gap-4 lg:px-8 first:lg:pl-0 last:lg:pr-0"
-              >
+          {(() => {
+            // Reusable stat cell renderer — keeps both rows visually consistent
+            const StatCell = ({ icon: Icon, value, label, description }: {
+              icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
+              value: string
+              label: string
+              description: string
+            }) => (
+              <div className="flex items-start gap-4 lg:px-6 first:lg:pl-0 last:lg:pr-0">
                 <div className="flex-shrink-0 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5">
                   <Icon className="w-6 h-6 text-amber-400" strokeWidth={1.5} />
                 </div>
@@ -399,8 +377,45 @@ function App() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            )
+
+            const scopeStats = [
+              { icon: Calendar, value: '3+', label: 'Years Experience',
+                description: 'Architecture, BIM Coordination & Design Engineering' },
+              { icon: Building2, value: '3+', label: 'Mega Projects',
+                description: 'Infrastructure & Landscape developments' },
+              { icon: Layers, value: '4.7M', label: 'm² Coordinated',
+                description: 'Across infrastructure & landscape mega-projects' },
+              { icon: Cpu, value: '10+', label: 'BIM Tools',
+                description: 'Revit, Navisworks, Civil 3D, Dynamo, COBie & more' },
+            ]
+
+            const outputStats = [
+              { icon: Database, value: '70+', label: 'Asset & COBie Registers',
+                description: 'Register files prepared & maintained' },
+              { icon: Boxes, value: '75+', label: 'Models Coordinated',
+                description: 'Multidisciplinary BIM models reviewed & coordinated' },
+              { icon: FileCheck, value: '30+', label: 'IFC & Shop Drawings',
+                description: 'Drawings and documentation delivered to projects' },
+            ]
+
+            return (
+              <>
+                {/* Top row: scope & scale (4 stats) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50">
+                  {scopeStats.map((s) => <StatCell key={s.label} {...s} />)}
+                </div>
+
+                {/* Divider between the two stat rows */}
+                <div className="my-10 border-t border-border/40" />
+
+                {/* Bottom row: delivery output (3 stats) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-0 lg:divide-x lg:divide-border/50 lg:max-w-5xl lg:mx-auto">
+                  {outputStats.map((s) => <StatCell key={s.label} {...s} />)}
+                </div>
+              </>
+            )
+          })()}
         </div>
       </section>
 
