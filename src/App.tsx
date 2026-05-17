@@ -357,13 +357,13 @@ function App() {
                 icon: Boxes,
                 value: '3+',
                 label: 'Mega Projects',
-                description: 'Infrastructure, Landscape & Coastal developments',
+                description: 'Infrastructure & Landscape developments',
               },
               {
                 icon: Layers,
                 value: '4.7M',
                 label: 'm² Coordinated',
-                description: 'Across infrastructure, coastal & landscape mega-projects',
+                description: 'Across infrastructure & landscape mega-projects',
               },
               {
                 icon: Cpu,
