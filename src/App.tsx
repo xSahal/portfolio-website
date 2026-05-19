@@ -456,76 +456,46 @@ function App() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Software Skills */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-amber-500/10 rounded-lg">
-                      <Cpu className="w-6 h-6 text-amber-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">Software</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {softwareSkills.map((skill) => (
-                      <Badge 
-                        key={skill} 
-                        variant="secondary" 
-                        className="bg-secondary/50 text-foreground hover:bg-amber-500/20 hover:text-amber-400 transition-colors"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            {(() => {
+              // Reusable pill: small amber dot + skill text, rounded-full, dark bg
+              const SkillPill = ({ label }: { label: string }) => (
+                <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-secondary/40 border border-border/40 hover:border-amber-500/40 hover:bg-amber-500/5 transition-colors group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 transition-transform group-hover:scale-125" />
+                  <span className="text-sm text-foreground/85 group-hover:text-amber-100 transition-colors">{label}</span>
+                </div>
+              )
 
-              {/* Professional Skills */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-amber-500/10 rounded-lg">
-                      <Briefcase className="w-6 h-6 text-amber-400" />
+              // Reusable card with header, divider, and a 2-col pill grid
+              const SkillCard = ({ icon: Icon, title, skills }: {
+                icon: React.ComponentType<{ className?: string }>
+                title: string
+                skills: string[]
+              }) => (
+                <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
+                  <CardContent className="p-6">
+                    {/* Header: icon + title + horizontal divider beneath */}
+                    <div className="flex items-center gap-3 pb-5 mb-5 border-b border-border/50">
+                      <div className="p-3 bg-amber-500/10 rounded-lg">
+                        <Icon className="w-6 h-6 text-amber-400" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white font-serif">{title}</h3>
                     </div>
-                    <h3 className="text-xl font-semibold text-white">Professional</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {professionalSkills.map((skill) => (
-                      <Badge 
-                        key={skill} 
-                        variant="secondary" 
-                        className="bg-secondary/50 text-foreground hover:bg-amber-500/20 hover:text-amber-400 transition-colors"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                    {/* Pills in 2-column grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {skills.map((skill) => <SkillPill key={skill} label={skill} />)}
+                    </div>
+                  </CardContent>
+                </Card>
+              )
 
-              {/* Strengths */}
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-amber-500/10 rounded-lg">
-                      <Award className="w-6 h-6 text-amber-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">Strengths</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {personalSkills.map((skill) => (
-                      <Badge 
-                        key={skill} 
-                        variant="secondary" 
-                        className="bg-secondary/50 text-foreground hover:bg-amber-500/20 hover:text-amber-400 transition-colors"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+              return (
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <SkillCard icon={Cpu} title="Software" skills={softwareSkills} />
+                  <SkillCard icon={Briefcase} title="Professional" skills={professionalSkills} />
+                  <SkillCard icon={Award} title="Strengths" skills={personalSkills} />
+                </div>
+              )
+            })()}
 
             {/* Languages */}
             <div className="mt-12 flex justify-center">
