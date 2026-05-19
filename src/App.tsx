@@ -444,7 +444,7 @@ function App() {
             </div>
 
             {/* Personal intro — humanizes the skill chips below */}
-            <div className="max-w-3xl mx-auto mb-14 text-center">
+            <div className="max-w-3xl mx-auto mb-10 text-center">
               <p className="text-base sm:text-lg text-foreground/85 leading-relaxed">
                 I'm an Architect-turned-BIM Coordinator with hands-on experience delivering
                 complex infrastructure and landscape developments across Saudi Arabia. I bridge
@@ -472,16 +472,16 @@ function App() {
                 skills: string[]
               }) => (
                 <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300">
-                  <CardContent className="p-6">
-                    {/* Header: icon + title + horizontal divider beneath */}
-                    <div className="flex items-center gap-3 pb-5 mb-5 border-b border-border/50">
-                      <div className="p-3 bg-amber-500/10 rounded-lg">
-                        <Icon className="w-6 h-6 text-amber-400" />
+                  <CardContent className="px-5 pt-4 pb-5">
+                    {/* Header: icon + title + horizontal divider beneath (tighter) */}
+                    <div className="flex items-center gap-3 pb-3 mb-3 border-b border-border/50">
+                      <div className="p-2.5 bg-amber-500/10 rounded-lg">
+                        <Icon className="w-5 h-5 text-amber-400" />
                       </div>
                       <h3 className="text-xl font-bold text-white font-serif">{title}</h3>
                     </div>
                     {/* Pills in 2-column grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {skills.map((skill) => <SkillPill key={skill} label={skill} />)}
                     </div>
                   </CardContent>
@@ -489,7 +489,8 @@ function App() {
               )
 
               return (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                // All cards stretch to the same height (default grid behavior)
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   <SkillCard icon={Cpu} title="Software" skills={softwareSkills} />
                   <SkillCard icon={Briefcase} title="Professional" skills={professionalSkills} />
                   <SkillCard icon={Award} title="Strengths" skills={personalSkills} />
