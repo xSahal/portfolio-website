@@ -87,13 +87,13 @@ function App() {
   const navItems = ['Home', 'About', 'Experience', 'Projects', 'Education', 'Contact']
 
   const softwareSkills = [
-    'AutoCAD', 'Civil 3D', 'Revit', 'Navisworks', '3Ds Max', 'V-Ray',
-    'Lumion', 'Aconex'
+    'AutoCAD', 'Civil 3D', 'Revit', 'Navisworks', 'Revizto',
+    '3Ds Max', 'V-Ray', 'Lumion', 'Aconex'
   ]
 
   const professionalSkills = [
-    'Infrastructure', 'BIM Coordination', 'Shop Drawings',
-    '3D Modeling', 'Rendering', 'Communication', 'Team Collaboration'
+    'BIM Coordination', 'Infrastructure Delivery', 'Asset Information',
+    'Shop Drawings', 'Model Federation', 'Model Integration', 'Design Documentation'
   ]
 
   const personalSkills = [
