@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import {
   Mail,
-  Phone,
   MapPin,
   Briefcase,
   GraduationCap,
@@ -886,33 +885,18 @@ function App() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300 group">
                 <CardContent className="p-6 text-center">
                   <div className="p-4 bg-amber-500/10 rounded-full w-16 h-16 mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
                     <Mail className="w-8 h-8 text-amber-400 mx-auto" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-                  <a 
-                    href="mailto:alshethrisahal@gmail.com" 
+                  <a
+                    href="mailto:alshethrisahal@gmail.com"
                     className="text-muted-foreground hover:text-amber-400 transition-colors"
                   >
                     alshethrisahal@gmail.com
-                  </a>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card/50 border-border/50 hover:border-amber-500/30 transition-all duration-300 group">
-                <CardContent className="p-6 text-center">
-                  <div className="p-4 bg-amber-500/10 rounded-full w-16 h-16 mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
-                    <Phone className="w-8 h-8 text-amber-400 mx-auto" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-                  <a 
-                    href="tel:+966531040088" 
-                    className="text-muted-foreground hover:text-amber-400 transition-colors"
-                  >
-                    +966 53 104 0088
                   </a>
                 </CardContent>
               </Card>
@@ -1000,13 +984,7 @@ function App() {
               >
                 <Mail className="w-5 h-5" />
               </a>
-              <a 
-                href="tel:+966531040088" 
-                className="text-muted-foreground hover:text-amber-400 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-              </a>
-              <a 
+              <a
                 href="https://www.linkedin.com/in/sahal-alshethri-599186183" 
                 target="_blank" 
                 rel="noopener noreferrer"
