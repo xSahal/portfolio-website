@@ -304,6 +304,12 @@ function App() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 font-serif">
               Sahal Sameer <span className="text-gradient">Alshethri</span>
             </h1>
+            <p className="max-w-3xl mx-auto text-sm sm:text-base text-muted-foreground mb-2 font-light leading-relaxed">
+              Sahal Alshethri (Sahal Alshathri / Sahal Alshathry · سهل الشثري) — Design Engineer & BIM Coordinator based in Riyadh.
+            </p>
+            <p className="max-w-3xl mx-auto text-sm text-muted-foreground/80 mb-4 font-light leading-relaxed" lang="ar" dir="rtl">
+              سهل الشثري — مهندس تصميم ومنسق نمذجة معلومات البناء (BIM) في الرياض
+            </p>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-2 font-light">
               BIM Coordinator – Infrastructure
             </p>
