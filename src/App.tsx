@@ -314,7 +314,7 @@ function App() {
               BIM Coordinator – Infrastructure
             </p>
             <p className="text-lg sm:text-xl text-amber-400 mb-8 font-medium">
-              Design Engineer
+              Design Engineer at Citiscape, Riyadh
             </p>
             <p className="max-w-2xl mx-auto text-muted-foreground mb-10 text-base sm:text-lg leading-relaxed">
               BIM coordination and asset information delivery for infrastructure and
