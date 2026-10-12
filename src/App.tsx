@@ -948,7 +948,7 @@ function App() {
                       className="border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
                     >
                       <a
-                        href="https://www.linkedin.com/in/sahal-alshethri-599186183"
+                        href="https://www.linkedin.com/in/sahal-alshathri-599186183/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -985,7 +985,7 @@ function App() {
                 <Mail className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/sahal-alshethri-599186183" 
+                href="https://www.linkedin.com/in/sahal-alshathri-599186183/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-amber-400 transition-colors"
