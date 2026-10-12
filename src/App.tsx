@@ -302,7 +302,7 @@ function App() {
               Available for Opportunities
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 font-serif">
-              Sahal Sameer <span className="text-gradient">Alshethri</span>
+              Sahal Sameer <span className="text-gradient">Alshathri</span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-2 font-light">
               BIM Coordinator – Infrastructure
@@ -323,7 +323,7 @@ function App() {
                 <a
                   href="/Sahal_Alshethri_CV.pdf"
                   download="Sahal_Alshethri_CV.pdf"
-                  aria-label="Download Sahal Alshethri's CV as PDF"
+                  aria-label="Download Sahal Alshathri's CV as PDF"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download CV
@@ -972,10 +972,10 @@ function App() {
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold text-amber-400 font-serif tracking-wider">SA</span>
               <span className="text-muted-foreground">|</span>
-              <span className="text-muted-foreground text-sm">Sahal Alshethri</span>
+              <span className="text-muted-foreground text-sm">Sahal Alshathri</span>
             </div>
             <p className="text-muted-foreground text-sm text-center">
-              © 2026 Sahal Alshethri. All rights reserved.
+              © 2026 Sahal Alshathri. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <a 
